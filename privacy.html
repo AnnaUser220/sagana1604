@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Политика в отношении персональных данных – Sagana</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: #f9fafb;
+            color: #111827;
+            line-height: 1.6;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            background: #fff;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 16px 24px;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 760px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .logo-circle {
+            width: 32px;
+            height: 32px;
+            background: #ff7400;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 900;
+            font-size: 18px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            color: #ff7400;
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 600;
+            transition: opacity 0.2s;
+        }
+
+        .back-link:hover {
+            opacity: 0.8;
+        }
+
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 48px 24px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 32px;
+            color: #111827;
+        }
+
+        .sections {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .section {
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 32px;
+            position: relative;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .section-number {
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
+            background: #ff7400;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #111827;
+            margin: 0;
+        }
+
+        .section-content {
+            margin-left: 56px;
+        }
+
+        .section-content p {
+            margin: 16px 0;
+            line-height: 1.7;
+            color: #374151;
+            font-size: 0.95rem;
+        }
+
+        .section-content p:first-child {
+            margin-top: 0;
+        }
+
+        .section-content ol,
+        .section-content ul {
+            margin: 16px 0 16px 24px;
+            color: #374151;
+            font-size: 0.95rem;
+        }
+
+        .section-content li {
+            margin: 8px 0;
+            line-height: 1.7;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.9rem;
+        }
+
+        .data-table th {
+            background: #f3f4f6;
+            border: 1px solid #e5e7eb;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .data-table td {
+            border: 1px solid #e5e7eb;
+            padding: 12px;
+            color: #374151;
+        }
+
+        .data-table tr:nth-child(even) {
+            background: #fafbfc;
+        }
+
+        a {
+            color: #ff7400;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+
+        footer {
+            background: #fff;
+            border-top: 1px solid #e5e7eb;
+            padding: 32px 24px;
+            margin-top: 48px;
+        }
+
+        .footer-content {
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        .footer-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #6b7280;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .footer-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #ff7400;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 24px 16px;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            .section-content {
+                margin-left: 0;
+            }
+
+            .data-table {
+                font-size: 0.8rem;
+            }
+
+            .data-table th,
+            .data-table td {
+                padding: 8px;
+            }
+
+            .footer-links {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-circle">S</div>
+                <span>Sagana</span>
+            </div>
+            <a href="index.html" class="back-link">← На главную</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>Политика в отношении обработки персональных данных</h1>
+
+        <div class="sections">
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-number">1</div>
+                    <h3 class="section-title">Назначение и область действия</h3>
+                </div>
+                <div class="section-content">
+                    <p><strong>1.1</strong> Настоящая политика определяет порядок обработки персональных данных индивидуальным предпринимателем (самозанятым), ИНН 560603999144 (далее – «Оператор»), при использовании пользователями веб-приложения https://app.sagana.ru (далее – «Сервис»).</p>
+                    <p><strong>1.2</strong> Контактные данные Оператора: <a href="mailto:support@sagana.ru">support@sagana.ru</a>, <a href="https://sagana.ru" target="_blank">sagana.ru</a></p>
+                    <p><strong>1.3</strong> Для получения детальной информации о политике обработки персональных данных, пожалуйста, посетите страницу https://app.sagana.ru/personal-policy</p>
+                    <p><strong>1.4</strong> Обработка персональных данных осуществляется в соответствии с Федеральным законом от 27.07.2006 № 152-ФЗ «О защите персональных данных».</p>
+                    <p><strong>1.5</strong> Политика применяется ко всем пользователям Сервиса, включая зарегистрированных и незарегистрированных посетителей.</p>
+                    <p><strong>1.6</strong> Оператор может изменять условия политики без предварительного уведомления. Изменения вступают в силу с момента публикации на Сервисе.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-number">2</div>
+                    <h3 class="section-title">Используемые термины</h3>
+                </div>
+                <div class="section-content">
+                    <p><strong>2.1 Персональные данные</strong> – любая информация, относящаяся к определённому или определяемому физическому лицу, включая имя, фамилию, адрес электронной почты, номер телефона, данные платежных карт (обрабатываются платёжной системой).</p>
+                    <p><strong>2.2 Обработка персональных данных</strong> – совокупность действий, совершаемых с персональными данными: сбор, запись, систематизация, накопление, хранение, уточнение, изменение, использование, распространение, блокирование, удаление, уничтожение.</p>
+                    <p><strong>2.3 Субъект персональных данных</strong> – физическое лицо, данные которого обрабатываются.</p>
+                    <p><strong>2.4 Сервис</strong> – веб-приложение по адресу https://app.sagana.ru, предоставляющее доступ к API различных провайдеров искусственного интеллекта.</p>
+                    <p><strong>2.5 Пользователь</strong> – физическое лицо, использующее Сервис.</p>
+                    <p><strong>2.6</strong> Дополнительная информация о правах и обязанностях сторон содержится в Федеральном законе от 27.07.2006 № 152-ФЗ.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-number">3</div>
+                    <h3 class="section-title">Порядок и условия обработки персональных данных</h3>
+                </div>
+                <div class="section-content">
+                    <p><strong>3.1 Принципы обработки:</strong>
+                        <ul>
+                            <li>Обработка персональных данных ограничена целями, указанными в настоящей политике;</li>
+                            <li>Обработка осуществляется на основе согласия субъекта персональных данных;</li>
+                            <li>Данные обрабатываются честно и законно;</li>
+                            <li>Хранение данных ограничено временем, необходимым для достижения целей обработки.</li>
+                        </ul>
+                    </p>
+                    <p><strong>3.2 Цели обработки персональных данных:</strong>
+                        <ul>
+                            <li>Создание и управление учётной записью пользователя;</li>
+                            <li>Обработка платежей и управление биллингом;</li>
+                            <li>Оказание технической поддержки;</li>
+                            <li>Отправка маркетинговых материалов (при согласии пользователя);</li>
+                            <li>Анализ использования Сервиса и улучшение его функционала;</li>
+                            <li>Соответствие требованиям законодательства РФ.</li>
+                        </ul>
+                    </p>
+                    <p><strong>3.3 Правовые основания обработки:</strong>
+                        <ul>
+                            <li>Согласие субъекта персональных данных (пункт 1 части 1 статьи 6 ФЗ-152);</li>
+                            <li>Выполнение договора, стороной которого является субъект данных (пункт 2 части 1 статьи 6 ФЗ-152);</li>
+                            <li>Соответствие требованиям законодательства (пункт 8 части 1 статьи 6 ФЗ-152).</li>
+                        </ul>
+                    </p>
+
+                    <p><strong>3.4 Сроки хранения персональных данных:</strong></p>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Категория данных</th>
+                                <th>Срок хранения</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Данные учётной записи</td>
+                                <td>Период активности учёта, затем 1 год после удаления</td>
+                            </tr>
+                            <tr>
+                                <td>Платёжные данные</td>
+                                <td>Согласно требованиям платёжных систем (не более 1 года)</td>
+                            </tr>
+                            <tr>
+                                <td>История запросов</td>
+                                <td>Период активности учёта</td>
+                            </tr>
+                            <tr>
+                                <td>Логи доступа</td>
+                                <td>30 дней</td>
+                            </tr>
+                            <tr>
+                                <td>Данные поддержки</td>
+                                <td>1 год после разрешения вопроса</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p><strong>3.5 Обработчики персональных данных:</strong></p>
+                    <ul>
+                        <li><strong>Хостинг:</strong> ООО Селектел, серверы расположены в Российской Федерации</li>
+                        <li><strong>Платёжная система:</strong> ЮKassa (не обрабатывает полные данные карт)</li>
+                    </ul>
+
+                    <p><strong>3.6 Передача данных AI-провайдерам:</strong> Для обработки пользовательских запросов данные передаются следующим провайдерам в псевдонимизированном виде (без идентификационной информации профиля):</p>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Провайдер</th>
+                                <th>Местоположение серверов</th>
+                                <th>Назначение</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>OpenRouter</td>
+                                <td>США</td>
+                                <td>Маршрутизация запросов к AI моделям</td>
+                            </tr>
+                            <tr>
+                                <td>Anthropic</td>
+                                <td>США</td>
+                                <td>Обработка запросов моделью Claude</td>
+                            </tr>
+                            <tr>
+                                <td>OpenAI</td>
+                                <td>США</td>
+                                <td>Обработка запросов моделями GPT</td>
+                            </tr>
+                            <tr>
+                                <td>Google</td>
+                                <td>США / Ирландия</td>
+                                <td>Обработка запросов моделями Gemini</td>
+                            </tr>
+                            <tr>
+                                <td>xAI</td>
+                                <td>США</td>
+                                <td>Обработка запросов моделью Grok</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p><strong>3.7 Использование cookies:</strong> Сервис использует cookies для аутентификации, сохранения настроек пользователя и анализа использования. Пользователь может отключить cookies в настройках браузера.</p>
+
+                    <p><strong>3.8 Трансграничная передача данных:</strong> Некоторые персональные данные могут быть переданы провайдерам, расположенным вне Российской Федерации. Пользователь согласен с такой передачей при использовании Сервиса.</p>
+
+                    <p><strong>3.9 Маркетинговые рассылки:</strong> Пользователь может согласиться на получение маркетинговых писем при регистрации или в личном кабинете. Отписаться можно в любое время через ссылку в письме или в настройках аккаунта.</p>
+
+                    <p><strong>3.10</strong> Обновление персональных данных: Пользователь может обновить свои персональные данные в личном кабинете в любое время.</p>
+
+                    <p><strong>3.11</strong> Безопасность: Оператор использует современные технологии защиты данных, включая шифрование и контроль доступа.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-number">4</div>
+                    <h3 class="section-title">Права субъекта персональных данных</h3>
+                </div>
+                <div class="section-content">
+                    <p>Пользователь имеет право:</p>
+                    <ul>
+                        <li>Получать информацию о том, какие его персональные данные обрабатываются;</li>
+                        <li>Требовать уточнение, блокирование или удаление своих персональных данных;</li>
+                        <li>Отозвать согласие на обработку персональных данных в любой момент;</li>
+                        <li>Потребовать ограничение обработки данных;</li>
+                        <li>Получить свои данные в структурированном, часто используемом и машиночитаемом формате;</li>
+                        <li>Обжаловать действия Оператора в соответствии с законодательством РФ;</li>
+                        <li>Направить жалобу в Федеральную службу по надзору в сфере связи, информационных технологий и массовых коммуникаций (Роскомнадзор).</li>
+                    </ul>
+                    <p style="margin-top: 16px;">Для реализации указанных прав следует направить письменный запрос на адрес <a href="mailto:support@sagana.ru">support@sagana.ru</a></p>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-number">5</div>
+                    <h3 class="section-title">Меры по обеспечению безопасности персональных данных</h3>
+                </div>
+                <div class="section-content">
+                    <p><strong>5.1 Определение и оценка угроз:</strong> Оператор регулярно анализирует потенциальные угрозы безопасности персональных данных и принимает меры для их предотвращения.</p>
+                    <p><strong>5.2 Организационные меры:</strong>
+                        <ul>
+                            <li>Ограничение доступа к персональным данным только авторизованным лицам;</li>
+                            <li>Обучение сотрудников по вопросам защиты персональных данных;</li>
+                            <li>Разработка и соблюдение политик безопасности.</li>
+                        </ul>
+                    </p>
+                    <p><strong>5.3 Технические меры:</strong>
+                        <ul>
+                            <li>Использование сертифицированных средств защиты информации;</li>
+                            <li>Шифрование данных при передаче и хранении;</li>
+                            <li>Контроль доступа к серверам;</li>
+                            <li>Резервное копирование данных;</li>
+                            <li>Регулярный аудит систем безопасности.</li>
+                        </ul>
+                    </p>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-number">6</div>
+                    <h3 class="section-title">Таблица обработки персональных данных</h3>
+                </div>
+                <div class="section-content">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Операция</th>
+                                <th>Собираемые данные</th>
+                                <th>Цель</th>
+                                <th>Гарантии</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Регистрация / Авторизация</td>
+                                <td>Email, пароль (хэшированный)</td>
+                                <td>Создание учёта, идентификация</td>
+                                <td>Шифрование, контроль доступа</td>
+                            </tr>
+                            <tr>
+                                <td>Платёж</td>
+                                <td>ФИО, адрес (платёжная система)</td>
+                                <td>Обработка платежа</td>
+                                <td>Платёжная система ЮKassa</td>
+                            </tr>
+                            <tr>
+                                <td>Техподдержка</td>
+                                <td>Email, текст обращения</td>
+                                <td>Разрешение проблем</td>
+                                <td>Контроль доступа, шифрование</td>
+                            </tr>
+                            <tr>
+                                <td>Использование Сервиса</td>
+                                <td>История запросов (псевдонимизированная)</td>
+                                <td>Анализ, улучшение</td>
+                                <td>Шифрование, контроль доступа</td>
+                            </tr>
+                            <tr>
+                                <td>Analytics / Логи</td>
+                                <td>IP, User Agent, время доступа</td>
+                                <td>Анализ трафика, безопасность</td>
+                                <td>Защита, удаление через 30 дней</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-title">Другие документы</div>
+            <div class="footer-links">
+                <a href="terms.html">Публичная оферта</a>
+                <a href="privacy.html">Политика конфиденциальности</a>
+                <a href="payment.html">Условия рекуррентных платежей</a>
+                <a href="index.html">На главную</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

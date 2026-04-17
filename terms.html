@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Публичная оферта – Sagana</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: #f9fafb;
+            color: #111827;
+            line-height: 1.6;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            background: #fff;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 16px 24px;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 760px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .logo-circle {
+            width: 32px;
+            height: 32px;
+            background: #ff7400;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 900;
+            font-size: 18px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            color: #ff7400;
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 600;
+            transition: opacity 0.2s;
+        }
+
+        .back-link:hover {
+            opacity: 0.8;
+        }
+
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 48px 24px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #111827;
+        }
+
+        .meta {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-bottom: 32px;
+            line-height: 1.5;
+        }
+
+        .meta strong {
+            color: #374151;
+        }
+
+        .intro {
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 32px;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: #374151;
+        }
+
+        .sections {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .section {
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 32px;
+            position: relative;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .section-number {
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
+            background: #ff7400;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #111827;
+            margin: 0;
+        }
+
+        .section-content {
+            margin-left: 56px;
+        }
+
+        .section-content p {
+            margin: 16px 0;
+            line-height: 1.7;
+            color: #374151;
+            font-size: 0.95rem;
+        }
+
+        .section-content p:first-child {
+            margin-top: 0;
+        }
+
+        .section-content ol,
+        .section-content ul {
+            margin: 16px 0 16px 24px;
+            color: #374151;
+            font-size: 0.95rem;
+        }
+
+        .section-content li {
+            margin: 8px 0;
+            line-height: 1.7;
+        }
+
+        .requisites {
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 24px;
+            margin-top: 32px;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: #374151;
+        }
+
+        .requisites-title {
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #111827;
+        }
+
+        .requisites p {
+            margin: 8px 0;
+        }
+
+        a {
+            color: #ff7400;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+
+        footer {
+            background: #fff;
+            border-top: 1px solid #e5e7eb;
+            padding: 32px 24px;
+            margin-top: 48px;
+        }
+
+        .footer-content {
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        .footer-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #6b7280;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .footer-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #ff7400;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 24px 16px;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            .section-content {
+                margin-left: 0;
+            }
+
+            .footer-links {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-circle">S</div>
+                <span>Sagana</span>
+            </div>
+            <a href="index.html" class="back-link">← На главную</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>Публичная оферта</h1>
+        <h2 style="font-size: 1rem; font-weight: 400; color: #6b7280; margin-bottom: 24px; margin-top: 0;">Лицензионный договор</h2>
+
+        <div class="meta">
+            <strong>Дата:</strong> 24 марта 2026 г.<br>
+            <strong>Издатель:</strong> app.sagana.ru
+        </div>
+
+        <div class="intro">
+            <p>Настоящий документ является публичной офертой Самозанятого, ИНН 560603999144 (далее – «Лицензиар»), адресованной любому дееспособному физическому лицу, ИП или юридическому лицу (далее – «Лицензиат»), на заключение Лицензионного договора на использование Сервиса.</p>
+        </div>
+
+        <div class="sections">
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-number">1</div>
+                    <h3 class="section-title">Термины и определения</h3>
+                </div>
+                <div class="section-content">
+                    <p><strong>1.1 Лицензиар</strong> – Самозанятый, ИНН 560603999144, являющийся обладателем всех прав на Сервис и предоставляющий право на его использование на условиях данного договора.</p>
+                    <p><strong>1.2 Лицензиат</strong> – физическое лицо, ИП или юридическое лицо, заключившее договор с Лицензиаром и получившее право на использование Сервиса в соответствии с условиями настоящей оферты.</p>
+                    <p><strong>1.3 Сервис</strong> – программное обеспечение и веб-приложение (https://app.sagana.ru), предоставляемое Лицензиаром для использования Лицензиатом в соответствии с условиями лицензионного договора.</p>
+                    <p><strong>1.4 Акцепт</strong> – безусловное принятие Лицензиатом всех условий настоящей оферты, совершаемое путём использования Сервиса или совершения платежа.</p>
+                    <p><strong>1.5 Кредиты</strong> – условные единицы стоимости в системе Сервиса, используемые для оплаты запросов к API интеграций.</p>
+                    <p><strong>1.6 API интеграции</strong> – интерфейсы программирования приложений сторонних провайдеров, к которым Лицензиар обеспечивает доступ через Сервис.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-number">2</div>
+                    <h3 class="section-title">Акцепт и порядок заключения договора</h3>
+                </div>
+                <div class="section-content">
+                    <p><strong>2.1</strong> Акцепт оферты осуществляется путём:
+                        <ul>
+                            <li>Регистрации учётной записи в Сервисе;</li>
+                            <li>Использования функционала Сервиса;</li>
+                            <li>Совершения первого платежа.</li>
+                        </ul>
+                    </p>
+                    <p><strong>2.2</strong> Лицензиат подтверждает, что он ознакомлен с условиями оферты, согласен с ними и принимает на себя все обязательства, вытекающие из заключения договора.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-number">3</div>
+                    <h3 class="section-title">Предмет договора</h3>
+                </div>
+                <div class="section-content">
+                    <p><strong>3.1</strong> Лицензиар предоставляет Лицензиату неисключительную, нетрансфертную лицензию на использование Сервиса в личных, профессиональных или коммерческих целях в соответствии с функционалом и ограничениями, установленными в Сервисе.</p>
+                    <p><strong>3.2</strong> Лицензиат получает доступ к Сервису и может использовать его функционал, включая возможность отправки запросов к API интеграциям, в объёме и на условиях, определяемых Лицензиаром.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-number">4</div>
+                    <h3 class="section-title">Правила использования и ограничения</h3>
+                </div>
+                <div class="section-content">
+                    <p><strong>4.1</strong> Лицензиат обязуется использовать Сервис в соответствии с законодательством РФ и международным правом, а также не создавать угрозу безопасности и стабильности системы Сервиса.</p>
+                    <p><strong>4.2</strong> Запрещается:
+                        <ul>
+                            <li>Копирование, модификация, адаптация или создание производных работ на основе Сервиса;</li>
+                            <li>Использование Сервиса для незаконной деятельности;</li>
+                            <li>Попытки несанкционированного доступа к Сервису или его компонентам;</li>
+                            <li>Использование технологий автоматизации для злоупотребления ресурсами Сервиса;</li>
+                            <li>Передача лицензии третьим лицам без согласия Лицензиара.</li>
+                        </ul>
+                    </p>
+                    <p><strong>4.3</strong> Лицензиар вправе временно или постоянно заблокировать доступ Лицензиата к Сервису при нарушении условий оферты.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-number">5</div>
+                    <h3 class="section-title">Порядок оплаты и тарифы</h3>
+                </div>
+                <div class="section-content">
+                    <p><strong>5.1</strong> Лицензиат обязан оплатить предоставленные ему кредиты перед использованием Сервиса. Тарифные планы, стоимость кредитов и условия оплаты указаны в Сервисе.</p>
+                    <p><strong>5.2</strong> Платежи осуществляются через платёжные системы, интегрированные в Сервис. Лицензиат несёт полную ответственность за корректность введённых платёжных данных.</p>
+                    <p><strong>5.3</strong> Расчёты проводятся в российских рублях (RUB). Все комиссии платёжных систем оплачиваются Лицензиатом.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-number">6</div>
+                    <h3 class="section-title">Интеллектуальные права</h3>
+                </div>
+                <div class="section-content">
+                    <p><strong>6.1</strong> Все материалы, код, дизайн и функционал Сервиса являются объектами интеллектуальной собственности Лицензиара и защищены законами РФ и международными договорами.</p>
+                    <p><strong>6.2</strong> Лицензиат не получает право собственности на Сервис. Лицензия предоставляется только для использования в соответствии с условиями оферты.</p>
+                    <p><strong>6.3</strong> Контент, созданный Лицензиатом с использованием Сервиса, принадлежит Лицензиату. Лицензиат предоставляет Лицензиару неограниченное право использовать такой контент в целях улучшения и развития Сервиса.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-number">7</div>
+                    <h3 class="section-title">Ограничение ответственности</h3>
+                </div>
+                <div class="section-content">
+                    <p><strong>7.1</strong> Сервис предоставляется «как есть» без каких-либо гарантий. Лицензиар не гарантирует, что Сервис будет соответствовать ожиданиям Лицензиата или будет без ошибок.</p>
+                    <p><strong>7.2</strong> Лицензиар не несёт ответственность за убытки, возникшие в результате использования Сервиса, включая потерю данных, упущенную выгоду или прерывание деятельности.</p>
+                    <p><strong>7.3</strong> Максимальный размер ответственности Лицензиара не превышает размер оплаты, произведённой Лицензиатом за последние 30 дней использования Сервиса.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-number">8</div>
+                    <h3 class="section-title">Порядок возврата денежных средств</h3>
+                </div>
+                <div class="section-content">
+                    <p><strong>8.1</strong> Возврат денежных средств осуществляется в течение 30 дней со дня совершения платежа при условии, что Лицензиат не использовал полученные кредиты.</p>
+                    <p><strong>8.2</strong> Размер возврата рассчитывается как сумма оплаты минус стоимость использованных кредитов. Стоимость использованных кредитов определяется по тарифам, действовавшим на момент их использования.</p>
+                    <p><strong>8.3</strong> После истечения 30 дней со дня совершения платежа возврат денежных средств не производится. Кредиты на счёте Лицензиата не имеют срока действия и могут быть использованы в любое время.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-number">9</div>
+                    <h3 class="section-title">Трансграничная передача данных</h3>
+                </div>
+                <div class="section-content">
+                    <p><strong>9.1</strong> Для обработки запросов Лицензиата Лицензиар передаёт данные запросов (в псевдонимизированном виде) провайдерам: OpenRouter, OpenAI, Anthropic, Google, xAI. Такая передача осуществляется в соответствии с условиями договоров с указанными провайдерами. Персональные данные профиля пользователя (имя, почта, телефон и т.д.) при этом не передаются.</p>
+                    <p><strong>9.2</strong> Передача данных может осуществляться как в пределах РФ, так и за её границей. Лицензиат согласен на такую передачу и принимает на себя все связанные с ней риски.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-number">10</div>
+                    <h3 class="section-title">Реквизиты и контакты</h3>
+                </div>
+                <div class="section-content">
+                    <p><strong>Наименование:</strong> Самозанятый</p>
+                    <p><strong>ИНН:</strong> 560603999144</p>
+                    <p><strong>Email:</strong> <a href="mailto:support@sagana.ru">support@sagana.ru</a></p>
+                    <p><strong>Веб-сайт:</strong> <a href="https://sagana.ru" target="_blank">sagana.ru</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-title">Другие документы</div>
+            <div class="footer-links">
+                <a href="terms.html">Публичная оферта</a>
+                <a href="privacy.html">Политика конфиденциальности</a>
+                <a href="payment.html">Условия рекуррентных платежей</a>
+                <a href="index.html">На главную</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

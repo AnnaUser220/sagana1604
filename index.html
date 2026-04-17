@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sagana – агрегатор ИИ без VPN, оплата в рублях</title>
+    <meta name="description" content="GPT-4o, Claude, Gemini, Grok, Sora, Veo – всё в одном окне. Без VPN. Оплата в рублях. Попробуйте бесплатно.">
+    <meta name="keywords" content="нейросети без VPN, ChatGPT в России, Claude в России, ИИ агрегатор, искусственный интеллект, оплата в рублях">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Sagana – ChatGPT, Claude, Gemini без VPN. Оплата в рублях.">
+    <meta property="og:description" content="GPT-4o, Claude, Gemini, Grok, Sora, Veo – всё в одном окне. Без VPN. Оплата в рублях.">
+    <meta property="og:url" content="https://sagana.ru">
+    <meta property="og:locale" content="ru_RU">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+                    colors: {
+                        primary: '#FF6B35',
+                        'primary-dark': '#E55100',
+                    },
+                    animation: {
+                        'scroll-left': 'scrollLeft 40s linear infinite',
+                    },
+                    keyframes: {
+                        scrollLeft: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        },
+                    },
+                }
+            }
+        }
+    </script>
+    <script src="pricing.js"></script>
+    <style>
+        html { scroll-behavior: smooth; }
+        .typewriter {
+            display: inline-block;
+            border-right: 2px solid currentColor;
+            animation: blink 0.7s infinite;
+        }
+        @keyframes blink {
+            0%, 49% { border-right-color: currentColor; }
+            50%, 100% { border-right-color: transparent; }
+        }
+        .brand-orange { color: #FF6B35; }
+        .bg-brand-orange { background-color: #FF6B35; }
+        .chat-bubble-user {
+            background-color: #FF6B35;
+            color: white;
+            border-radius: 18px 4px 18px 18px;
+            padding: 12px 16px;
+            max-width: 24rem;
+            margin-left: auto;
+            display: inline-block;
+        }
+        .chat-bubble-ai {
+            background-color: #E5E7EB;
+            color: #111827;
+            border-radius: 4px 18px 18px 18px;
+            padding: 12px 16px;
+            max-width: 24rem;
+        }
+        .dark .chat-bubble-ai {
+            background-color: #374151;
+            color: #F3F4F6;
+        }
+        .model-card {
+            border-radius: 8px;
+            padding: 16px;
+            color: white;
+            font-weight: 600;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .model-card:hover {
+            transform: scale(1.05);
+        }
+        .trust-badge-green {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #16A34A;
+            font-weight: 500;
+        }
+        .dark .trust-badge-green {
+            color: #4ADE80;
+        }
+        .provider-badge {
+            display: inline-block;
+            padding: 8px 12px;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        .fade-in {
+            animation: fadeIn 0.6s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .review-card {
+            flex-shrink: 0;
+            width: 320px;
+            background-color: white;
+            border-radius: 8px;
+            padding: 24px;
+            border: 1px solid #E5E7EB;
+        }
+        .dark .review-card {
+            background-color: #1F2937;
+            border-color: #374151;
+        }
+        .avatar-circle {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.875rem;
+        }
+        @media (max-width: 640px) {
+            .chat-bubble-user,
+            .chat-bubble-ai {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors">
+
+<!-- HEADER -->
+<header class="sticky top-0 z-50 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 transition-colors">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-8">
+            <img id="logo-img" src="logo-light.svg" alt="Sagana" class="h-8">
+            <nav class="hidden md:flex gap-8">
+                <a href="#capabilities" class="text-sm font-medium hover:text-primary transition">Возможности</a>
+                <a href="#pricing" class="text-sm font-medium hover:text-primary transition">Тарифы</a>
+                <a href="#reviews" class="text-sm font-medium hover:text-primary transition">Отзывы</a>
+                <a href="#faq" class="text-sm font-medium hover:text-primary transition">Вопросы</a>
+                <a href="https://t.me/saganaAI" target="_blank" class="text-sm font-medium hover:text-primary transition">ТГ</a>
+            </nav>
+        </div>
+        <div class="flex items-center gap-4">
+            <button id="theme-toggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition text-gray-900 dark:text-white">
+                <svg id="icon-moon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+                <svg id="icon-sun" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M18.364 18.364l-.707-.707M6.343 6.343l-.707-.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+            </button>
+            <a href="https://app.sagana.ru/" class="text-sm font-medium hover:text-primary transition hidden sm:inline">Войти</a>
+            <a href="https://app.sagana.ru/" class="js-cta bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded-lg text-sm font-medium transition hidden md:inline-block">Попробовать бесплатно</a>
+        </div>
+    </div>
+</header>
+
+<!-- HERO SECTION -->
+<section class="bg-white dark:bg-gray-900 pt-16 pb-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-in">
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+            <span id="typing-model" class="text-primary typewriter">ChatGPT</span>
+            <br>
+            ведущие нейросети мира
+        </h1>
+        <p class="text-base text-gray-600 dark:text-gray-400 mb-8">
+            Всё в одном окне. Оплата в рублях.
+        </p>
+
+        <!-- TRUST BADGES -->
+        <div class="flex flex-col sm:flex-row gap-6 justify-center mb-10 flex-wrap">
+            <div class="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+                <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                Работает без VPN
+            </div>
+            <div class="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+                <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+                Российская карта
+            </div>
+            <div class="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+                <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                Регистрация за 30 секунд
+            </div>
+        </div>
+
+        <!-- CTA BUTTONS -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+            <a href="https://app.sagana.ru/" class="js-cta bg-primary hover:bg-primary-dark text-white px-6 py-3 rounded-lg font-semibold transition inline-block">
+                Попробовать бесплатно
+            </a>
+            <a href="#pricing" class="js-cta border-2 border-primary text-primary hover:bg-primary hover:text-white px-6 py-3 rounded-lg font-semibold transition inline-block">
+                Смотреть тарифы
+            </a>
+        </div>
+
+        <!-- INPUT WIDGET -->
+        <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6 max-w-3xl mx-auto">
+            <textarea id="try-input" placeholder="Что генерируем сегодня?" class="w-full bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-2xl px-4 py-3 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 resize-none h-48 focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+            <div class="flex items-center justify-between mt-4 gap-4 flex-wrap">
+                <select id="model-selector" class="px-3 py-2 rounded-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm font-medium">
+                    <option>Gemini</option>
+                    <option>ChatGPT-4o</option>
+                    <option>Claude Opus</option>
+                    <option>Grok 3</option>
+                    <option>Veo 3</option>
+                    <option>Sora</option>
+                    <option>Nano Banana</option>
+                </select>
+                <button id="try-btn" class="js-cta bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded-lg font-medium transition whitespace-nowrap">
+                    Отправить
+                </button>
+            </div>
+            <div id="copy-toast" class="hidden fixed bottom-4 left-1/2 -translate-x-1/2 bg-gray-900 dark:bg-gray-700 text-white px-6 py-3 rounded-lg text-sm font-medium z-50">
+                Текст скопирован! Перенаправляем...
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- BRAND BOARD - FLOATING TEXT PATTERN -->
+<section class="py-20 overflow-hidden relative">
+    <div class="absolute inset-0 flex flex-wrap items-center justify-center gap-x-12 gap-y-6 opacity-[0.07] dark:opacity-[0.05] select-none pointer-events-none" aria-hidden="true">
+        <span class="text-5xl font-black">GPT-4o</span>
+        <span class="text-3xl font-bold">Claude</span>
+        <span class="text-4xl font-black">Gemini</span>
+        <span class="text-2xl font-bold">Grok 3</span>
+        <span class="text-6xl font-black">Sora</span>
+        <span class="text-3xl font-bold">Veo 2</span>
+        <span class="text-4xl font-black">DALL-E 3</span>
+        <span class="text-2xl font-bold">Imagen 3</span>
+        <span class="text-5xl font-black">Banana</span>
+        <span class="text-3xl font-bold">Seedream</span>
+        <span class="text-4xl font-bold">GPT Voice</span>
+        <span class="text-2xl font-black">Claude Opus</span>
+        <span class="text-3xl font-bold">Gemini Voice</span>
+        <span class="text-5xl font-black">GPT-4o mini</span>
+        <span class="text-2xl font-bold">Grok Vision</span>
+        <span class="text-4xl font-black">Claude Haiku</span>
+        <span class="text-3xl font-bold">Gemini Pro</span>
+    </div>
+    <div class="relative z-10 max-w-4xl mx-auto px-4 text-center">
+    </div>
+</section>
+
+<!-- HOW IT WORKS - SCREENSHOTS -->
+<section class="bg-white dark:bg-gray-900 py-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-center mb-12">Три шага до результата</h2>
+        <div class="space-y-12 mb-12">
+            <!-- Шаг 1: картинка слева, текст справа -->
+            <div class="flex flex-col md:flex-row items-center gap-8">
+                <div class="w-full md:w-2/3">
+                    <img src="images/3steps_reg.jpg" alt="Зарегистрируйтесь" class="rounded-2xl w-full object-contain">
+                </div>
+                <div class="w-full md:w-1/3 text-center md:text-left">
+                    <span class="text-5xl font-black text-primary/20 block mb-2">01</span>
+                    <h3 class="text-xl font-bold mb-3">Зарегистрируйтесь</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-base">За 30 секунд через телефон или email</p>
+                </div>
+            </div>
+            <!-- Шаг 2: текст слева, картинка справа -->
+            <div class="flex flex-col md:flex-row-reverse items-center gap-8">
+                <div class="w-full md:w-2/3">
+                    <img src="images/3steps_choose.jpg" alt="Выберите нейросеть" class="rounded-2xl w-full object-contain">
+                </div>
+                <div class="w-full md:w-1/3 text-center md:text-left">
+                    <span class="text-5xl font-black text-primary/20 block mb-2">02</span>
+                    <h3 class="text-xl font-bold mb-3">Выберите нейросеть</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-base">От ChatGPT до Sora в одном интерфейсе</p>
+                </div>
+            </div>
+            <!-- Шаг 3: картинка слева, текст справа -->
+            <div class="flex flex-col md:flex-row items-center gap-8">
+                <div class="w-full md:w-2/3">
+                    <img src="images/3steps_result.jpg" alt="Получите результат" class="rounded-2xl w-full object-contain">
+                </div>
+                <div class="w-full md:w-1/3 text-center md:text-left">
+                    <span class="text-5xl font-black text-primary/20 block mb-2">03</span>
+                    <h3 class="text-xl font-bold mb-3">Получите результат</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-base">Пишите, рисуйте, генерируйте видео</p>
+                </div>
+            </div>
+        </div>
+        <div class="text-center">
+            <a href="https://app.sagana.ru/" class="js-cta bg-primary hover:bg-primary-dark text-white px-6 py-3 rounded-lg font-semibold transition inline-block">
+                Начать прямо сейчас
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- PROBLEM/SOLUTION -->
+<section class="bg-gray-50 dark:bg-gray-800 py-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-center mb-12">5 подписок + VPN + иностранная карта... или <a href="https://app.sagana.ru/" class="text-primary hover:underline js-cta">один сервис</a></h2>
+        <div class="grid md:grid-cols-2 gap-8 mb-12">
+            <div class="bg-white dark:bg-gray-900 rounded-lg p-8">
+                <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+                    <span class="text-xl">❌</span>
+                    <span>Другие сервисы</span>
+                </h3>
+                <ul class="space-y-4">
+                    <li class="text-gray-600 dark:text-gray-400">• 5 разных подписок = 5000+ рублей в месяц</li>
+                    <li class="text-gray-600 dark:text-gray-400">• Нужен VPN или посредники</li>
+                    <li class="text-gray-600 dark:text-gray-400">• Иностранная карта или крипто</li>
+                    <li class="text-gray-600 dark:text-gray-400">• Переключаться между сайтами</li>
+                    <li class="text-gray-600 dark:text-gray-400">• История разбросана по разным сервисам</li>
+                    <li class="text-gray-600 dark:text-gray-400">• Нестабильное соединение</li>
+                </ul>
+            </div>
+            <div class="bg-white dark:bg-gray-900 rounded-lg p-8 border-2 border-primary">
+                <h3 class="text-xl font-bold mb-6 text-primary">Sagana</h3>
+                <ul class="space-y-4">
+                    <li class="text-gray-600 dark:text-gray-400"><span class="text-green-500">✓</span> Одна подписка</li>
+                    <li class="text-gray-600 dark:text-gray-400"><span class="text-green-500">✓</span> Работает без VPN</li>
+                    <li class="text-gray-600 dark:text-gray-400"><span class="text-green-500">✓</span> Оплата российской картой</li>
+                    <li class="text-gray-600 dark:text-gray-400"><span class="text-green-500">✓</span> Все нейросети в одном окне</li>
+                    <li class="text-gray-600 dark:text-gray-400"><span class="text-green-500">✓</span> Папки чатов</li>
+                    <li class="text-gray-600 dark:text-gray-400"><span class="text-green-500">✓</span> Помнит весь диалог</li>
+                    <li class="text-gray-600 dark:text-gray-400"><span class="text-green-500">✓</span> Стабильная работа 24/7</li>
+                </ul>
+            </div>
+        </div>
+        <div class="text-center">
+            <a href="https://app.sagana.ru/" class="js-cta bg-primary hover:bg-primary-dark text-white px-6 py-3 rounded-lg font-semibold transition inline-block">
+                Попробовать бесплатно
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURES SECTION -->
+<section id="capabilities" class="bg-white dark:bg-gray-900 py-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-center mb-12">Что можно делать в Sagana</h2>
+        <div class="grid md:grid-cols-2 gap-8 mb-8">
+            <!-- ТЕКСТ И КОД -->
+            <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-5 feature-gallery" data-current="0">
+                <div class="relative rounded-xl overflow-hidden mb-4" style="height:320px">
+                    <div class="gallery-slides">
+                        <img src="images/text_code3.jpg" class="gallery-slide absolute inset-0 w-full h-full object-cover object-top transition-opacity duration-500 opacity-100" data-index="0">
+                        <img src="images/text_code2.jpg" class="gallery-slide absolute inset-0 w-full h-full object-cover object-top transition-opacity duration-500 opacity-0" data-index="1">
+                        <img src="images/text_code1.jpg" class="gallery-slide absolute inset-0 w-full h-full object-cover object-top transition-opacity duration-500 opacity-0" data-index="2">
+                    </div>
+                    <button class="gallery-prev absolute left-3 top-1/2 -translate-y-1/2 bg-white/90 dark:bg-gray-900/90 rounded-full w-9 h-9 flex items-center justify-center text-base shadow-md hover:bg-white dark:hover:bg-gray-900 transition z-10">‹</button>
+                    <button class="gallery-next absolute right-3 top-1/2 -translate-y-1/2 bg-white/90 dark:bg-gray-900/90 rounded-full w-9 h-9 flex items-center justify-center text-base shadow-md hover:bg-white dark:hover:bg-gray-900 transition z-10">›</button>
+                    <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+                        <span class="gallery-dot w-2 h-2 rounded-full bg-white shadow transition"></span>
+                        <span class="gallery-dot w-2 h-2 rounded-full bg-white/40 shadow transition"></span>
+                        <span class="gallery-dot w-2 h-2 rounded-full bg-white/40 shadow transition"></span>
+                    </div>
+                </div>
+                <h3 class="font-bold text-xl mb-1">Текст и код</h3>
+                <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">GPT-4o, Claude, Gemini, Grok и др.</p>
+                <div class="bg-white dark:bg-gray-900 rounded-xl px-4 py-3 border border-gray-200 dark:border-gray-700">
+                    <p class="gallery-prompt text-sm text-gray-700 dark:text-gray-300 italic" data-prompts='||Составь мне рацион питания на неделю||'>&nbsp;</p>
+                </div>
+            </div>
+            <!-- ИЗОБРАЖЕНИЯ -->
+            <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-5 feature-gallery" data-current="0">
+                <div class="relative rounded-xl overflow-hidden mb-4" style="height:320px">
+                    <div class="gallery-slides">
+                        <img src="images/img_1.jpg" class="gallery-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-100" data-index="0">
+                        <img src="images/img_2.jpg" class="gallery-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-0" data-index="1">
+                        <img src="images/img_4.jpg" class="gallery-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-0" data-index="2">
+                    </div>
+                    <button class="gallery-prev absolute left-3 top-1/2 -translate-y-1/2 bg-white/90 dark:bg-gray-900/90 rounded-full w-9 h-9 flex items-center justify-center text-base shadow-md hover:bg-white dark:hover:bg-gray-900 transition z-10">‹</button>
+                    <button class="gallery-next absolute right-3 top-1/2 -translate-y-1/2 bg-white/90 dark:bg-gray-900/90 rounded-full w-9 h-9 flex items-center justify-center text-base shadow-md hover:bg-white dark:hover:bg-gray-900 transition z-10">›</button>
+                    <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+                        <span class="gallery-dot w-2 h-2 rounded-full bg-white shadow transition"></span>
+                        <span class="gallery-dot w-2 h-2 rounded-full bg-white/40 shadow transition"></span>
+                        <span class="gallery-dot w-2 h-2 rounded-full bg-white/40 shadow transition"></span>
+                    </div>
+                </div>
+                <h3 class="font-bold text-xl mb-1">Изображения</h3>
+                <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">Banana, Grok Image, ChatGPT Image и др.</p>
+                <div class="bg-white dark:bg-gray-900 rounded-xl px-4 py-3 border border-gray-200 dark:border-gray-700">
+                    <p class="gallery-prompt text-sm text-gray-700 dark:text-gray-300 italic" data-prompts='Рыцарь слушает музыку в больших дорогих наушниках, на фоне замок и знамена со львами||В запустыненном Питере Джеймсон с мужиками на санках стоит в пробке в знойную жару и читает газету про человека паука||Арбуз кинематографично разрезан и время остановлено, фон размыт, сок разлетается'>«Рыцарь слушает музыку в больших дорогих наушниках, на фоне замок и знамена со львами»</p>
+                </div>
+            </div>
+            <!-- ВИДЕО -->
+            <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-5 feature-gallery" data-current="0">
+                <div class="relative rounded-xl overflow-hidden mb-4" style="height:320px">
+                    <div class="gallery-slides">
+                        <video src="images/videoz.mp4" autoplay muted loop playsinline class="gallery-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-100" data-index="0"></video>
+                        <video src="images/videoz2.mp4" autoplay muted loop playsinline class="gallery-slide absolute inset-0 w-full h-full object-cover object-top transition-opacity duration-500 opacity-0" data-index="1"></video>
+                        <img src="images/video_3.gif" class="gallery-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-0" data-index="2">
+                    </div>
+                    <button class="gallery-prev absolute left-3 top-1/2 -translate-y-1/2 bg-white/90 dark:bg-gray-900/90 rounded-full w-9 h-9 flex items-center justify-center text-base shadow-md hover:bg-white dark:hover:bg-gray-900 transition z-10">‹</button>
+                    <button class="gallery-next absolute right-3 top-1/2 -translate-y-1/2 bg-white/90 dark:bg-gray-900/90 rounded-full w-9 h-9 flex items-center justify-center text-base shadow-md hover:bg-white dark:hover:bg-gray-900 transition z-10">›</button>
+                    <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+                        <span class="gallery-dot w-2 h-2 rounded-full bg-white shadow transition"></span>
+                        <span class="gallery-dot w-2 h-2 rounded-full bg-white/40 shadow transition"></span>
+                        <span class="gallery-dot w-2 h-2 rounded-full bg-white/40 shadow transition"></span>
+                    </div>
+                </div>
+                <h3 class="font-bold text-xl mb-1">Видео</h3>
+                <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">Sora, Veo 2 и др.</p>
+                <div class="bg-white dark:bg-gray-900 rounded-xl px-4 py-3 border border-gray-200 dark:border-gray-700">
+                    <p class="gallery-prompt text-sm text-gray-700 dark:text-gray-300 italic" data-prompts='Уилл Смит надевает очки и шляпу, идет по грязи к желтой ламборгини, пока пришельцы похищают корову||Кинематографичное видео — камера резко двигается вперед а потом внезапно отдаляется от камня до самого космоса: действие на географии России, так — от камня вплоть до галактики Млечный Путь||Сделай милый мультик про трех пришельцев на луне, ужин при свечах со спагетти и фрикадельками, радость, древние подсвечники и свечи-голограммы'>«Уилл Смит надевает очки и шляпу, идет по грязи к желтой ламборгини, пока пришельцы похищают корову»</p>
+                </div>
+            </div>
+            <!-- ГОЛОС -->
+            <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-5 feature-gallery" data-current="0">
+                <div class="relative rounded-xl overflow-hidden mb-4" style="height:320px">
+                    <div class="gallery-slides">
+                        <img src="images/voice1.jpg" class="gallery-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-100" data-index="0">
+                        <img src="images/voice2.jpg" class="gallery-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-0" data-index="1">
+                    </div>
+                    <button class="gallery-prev absolute left-3 top-1/2 -translate-y-1/2 bg-white/90 dark:bg-gray-900/90 rounded-full w-9 h-9 flex items-center justify-center text-base shadow-md hover:bg-white dark:hover:bg-gray-900 transition z-10">‹</button>
+                    <button class="gallery-next absolute right-3 top-1/2 -translate-y-1/2 bg-white/90 dark:bg-gray-900/90 rounded-full w-9 h-9 flex items-center justify-center text-base shadow-md hover:bg-white dark:hover:bg-gray-900 transition z-10">›</button>
+                    <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+                        <span class="gallery-dot w-2 h-2 rounded-full bg-white shadow transition"></span>
+                        <span class="gallery-dot w-2 h-2 rounded-full bg-white/40 shadow transition"></span>
+                    </div>
+                </div>
+                <h3 class="font-bold text-xl mb-1">Голос</h3>
+                <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">GPT Voice, Gemini Voice и др.</p>
+                <div class="bg-white dark:bg-gray-900 rounded-xl px-4 py-3 border border-gray-200 dark:border-gray-700">
+                    <p class="gallery-prompt text-sm text-gray-700 dark:text-gray-300 italic" data-prompts='Расскажи ребенку сказку, которая учит смелости||Давай попрактикуем разговорный английский'>«Расскажи ребенку сказку, которая учит смелости»</p>
+                </div>
+            </div>
+        </div>
+        <div class="text-center">
+            <a href="https://app.sagana.ru/" class="js-cta bg-primary hover:bg-primary-dark text-white px-6 py-3 rounded-lg font-semibold transition inline-block">
+                Исследовать возможности
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- WORKSPACE SECTION -->
+<section class="bg-gray-50 dark:bg-gray-800 py-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="text-3xl font-bold mb-4">Рабочее пространство</h2>
+                <p class="text-base text-gray-600 dark:text-gray-400 mb-6">Всё на месте: <span class="text-primary font-semibold">папки</span>, <span class="text-primary font-semibold">избранное</span>, <span class="text-primary font-semibold">история</span> — и управляемый доступ к диалогам.</p>
+                <ul class="space-y-4 mb-8">
+                    <li class="flex items-center gap-3 text-gray-700 dark:text-gray-300 text-base">
+                        <svg class="w-6 h-6 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/></svg>
+                        Папки для организации чатов
+                    </li>
+                    <li class="flex items-center gap-3 text-gray-700 dark:text-gray-300 text-base">
+                        <svg class="w-6 h-6 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/></svg>
+                        Закрепление и избранное
+                    </li>
+                    <li class="flex items-center gap-3 text-gray-700 dark:text-gray-300 text-base">
+                        <svg class="w-6 h-6 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
+                        Управляйте ссылками на диалоги
+                    </li>
+                    <li class="flex items-center gap-3 text-gray-700 dark:text-gray-300 text-base">
+                        <svg class="w-6 h-6 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        Память диалога: ИИ помнит о чем Вы разговаривали
+                    </li>
+                </ul>
+                <a href="https://app.sagana.ru/" class="js-cta bg-primary hover:bg-primary-dark text-white px-6 py-3 rounded-lg font-semibold transition inline-block">
+                    Попробовать бесплатно
+                </a>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="rounded-xl aspect-square overflow-hidden"><img src="images/organization_1.jpg" alt="Папки и организация" class="w-full h-full object-cover"></div>
+                <div class="rounded-xl aspect-square overflow-hidden"><img src="images/organization_2.jpg" alt="Избранное и закрепление" class="w-full h-full object-cover"></div>
+                <div class="rounded-xl col-span-2 aspect-video overflow-hidden"><img src="images/organization_3.jpg" alt="Интерфейс Sagana" class="w-full h-full object-cover object-top"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ASSISTANTS SECTION -->
+<section class="bg-white dark:bg-gray-900 py-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-center mb-3">30+ ИИ-ассистентов</h2>
+        <p class="text-center text-gray-500 dark:text-gray-400 mb-12">Виртуозно работают в узких сферах</p>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-5 mb-12">
+            <div class="group text-center">
+                <div class="w-20 h-20 mx-auto mb-3 rounded-full overflow-hidden ring-2 ring-gray-200 dark:ring-gray-700 group-hover:ring-primary transition">
+                    <img src="images/angl.png" class="w-full h-full object-cover">
+                </div>
+                <p class="font-semibold text-sm">Учитель английского</p>
+                <p class="text-sm text-gray-400 mt-0.5">Практика и грамматика</p>
+            </div>
+            <div class="group text-center">
+                <div class="w-20 h-20 mx-auto mb-3 rounded-full overflow-hidden ring-2 ring-gray-200 dark:ring-gray-700 group-hover:ring-primary transition">
+                    <img src="images/trener.png" class="w-full h-full object-cover">
+                </div>
+                <p class="font-semibold text-sm">Тренер</p>
+                <p class="text-sm text-gray-400 mt-0.5">Планы тренировок</p>
+            </div>
+            <div class="group text-center">
+                <div class="w-20 h-20 mx-auto mb-3 rounded-full overflow-hidden ring-2 ring-gray-200 dark:ring-gray-700 group-hover:ring-primary transition">
+                    <img src="images/dietolog.png" class="w-full h-full object-cover">
+                </div>
+                <p class="font-semibold text-sm">Диетолог</p>
+                <p class="text-sm text-gray-400 mt-0.5">Рацион и советы</p>
+            </div>
+            <div class="group text-center">
+                <div class="w-20 h-20 mx-auto mb-3 rounded-full overflow-hidden ring-2 ring-gray-200 dark:ring-gray-700 group-hover:ring-primary transition">
+                    <img src="images/repetitor.png" class="w-full h-full object-cover">
+                </div>
+                <p class="font-semibold text-sm">Репетитор</p>
+                <p class="text-sm text-gray-400 mt-0.5">Помощь с учёбой</p>
+            </div>
+            <div class="group text-center">
+                <div class="w-20 h-20 mx-auto mb-3 rounded-full overflow-hidden ring-2 ring-gray-200 dark:ring-gray-700 group-hover:ring-primary transition">
+                    <img src="images/marketolog.png" class="w-full h-full object-cover">
+                </div>
+                <p class="font-semibold text-sm">Маркетолог</p>
+                <p class="text-sm text-gray-400 mt-0.5">Стратегии и тексты</p>
+            </div>
+            <div class="group text-center">
+                <div class="w-20 h-20 mx-auto mb-3 rounded-full overflow-hidden ring-2 ring-primary ring-offset-2 dark:ring-offset-gray-900">
+                    <div class="w-full h-full bg-primary/10 flex items-center justify-center">
+                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                    </div>
+                </div>
+                <p class="font-semibold text-sm text-primary">Создать свой</p>
+                <p class="text-sm text-gray-400 mt-0.5">Под ваши задачи</p>
+            </div>
+        </div>
+        <div class="text-center">
+            <a href="https://app.sagana.ru/" class="js-cta bg-primary hover:bg-primary-dark text-white px-6 py-3 rounded-lg font-semibold transition inline-block">
+                Выбрать ассистента
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- REVIEWS TICKER -->
+<section id="reviews" class="bg-white dark:bg-gray-900 py-16 overflow-hidden">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-center mb-12">Что говорят пользователи</h2>
+        <div class="relative overflow-hidden">
+            <div class="flex gap-6 animate-scroll-left" id="reviews-container">
+                <!-- Reviews will be inserted here by JavaScript -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PRICING SECTION -->
+<section id="pricing" class="bg-gray-50 dark:bg-gray-800 py-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-10">
+            <h2 class="text-3xl font-bold mb-4">Простые и понятные тарифы</h2>
+            <p class="text-gray-500 dark:text-gray-400 mb-6" id="pricing-subtitle"></p>
+            <div class="flex items-center justify-center gap-3">
+                <span id="label-monthly" class="text-sm font-semibold cursor-pointer" onclick="document.getElementById('billing-toggle').click()">Помесячно</span>
+                <label class="relative inline-flex items-center cursor-pointer">
+                    <input type="checkbox" id="billing-toggle" class="sr-only peer">
+                    <div class="w-11 h-6 bg-gray-300 rounded-full peer-checked:bg-primary after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full"></div>
+                </label>
+                <span id="label-yearly" class="text-sm font-semibold text-gray-400 cursor-pointer" onclick="document.getElementById('billing-toggle').click()">Годовой <span class="text-primary text-sm font-bold">выгоднее</span></span>
+            </div>
+        </div>
+        <div id="pricing-cards" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+        <p class="text-center text-sm text-gray-400 mt-6">Нужны особые условия? <a href="mailto:support@sagana.ru" class="text-primary hover:underline">Напишите нам</a></p>
+    </div>
+</section>
+
+<!-- FAQ - COLLAPSIBLE GRID -->
+<section id="faq" class="bg-white dark:bg-gray-900 py-16">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-center mb-12">Вопросы и ответы</h2>
+        <div id="faq-content">
+            <div class="grid md:grid-cols-2 gap-4">
+                <details class="bg-gray-50 dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 group">
+                    <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-sm list-none"><span><svg class="w-5 h-5 text-primary shrink-0 inline-block mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg> Какие нейросети доступны?</span><svg class="w-4 h-4 text-gray-400 shrink-0 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></summary>
+                    <div class="px-5 pb-5 text-sm text-gray-600 dark:text-gray-400">Мы собрали ведущие нейросети мира: chatGPT, Claude, Gemini, Grok, Veo, Sora, Nano Banana и разные их версии, чтобы у вас было все самое лучшее – и список продолжает пополняться</div>
+                </details>
+                <details class="bg-gray-50 dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 group">
+                    <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-sm list-none"><span><svg class="w-5 h-5 text-primary shrink-0 inline-block mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg> Что ещё входит, кроме нейросетей?</span><svg class="w-4 h-4 text-gray-400 shrink-0 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></summary>
+                    <div class="px-5 pb-5 text-sm text-gray-600 dark:text-gray-400">30+ ИИ-ассистентов, папки для чатов, память диалога, в техподдержке живой человек. Создавайте, делитесь с друзьями, сохраняйте лучшее в “избранное”</div>
+                </details>
+                <details class="bg-gray-50 dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 group">
+                    <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-sm list-none"><span><svg class="w-5 h-5 text-primary shrink-0 inline-block mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/></svg> Есть ли бесплатный период?</span><svg class="w-4 h-4 text-gray-400 shrink-0 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></summary>
+                    <div class="px-5 pb-5 text-sm text-gray-600 dark:text-gray-400">Да! Есть бесплатный пробный тариф с доступом к текстовым моделям и генерации изображений. Регистрация без карты</div>
+                </details>
+                <details class="bg-gray-50 dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 group">
+                    <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-sm list-none"><span><svg class="w-5 h-5 text-primary shrink-0 inline-block mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg> Как работают кредиты?</span><svg class="w-4 h-4 text-gray-400 shrink-0 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></summary>
+                    <div class="px-5 pb-5 text-sm text-gray-600 dark:text-gray-400">Каждый запрос стоит определенное количество кредитов. Текст – немного, изображения – больше, видео – ещё больше. Цены зависят и от сложности и способностей выбранной модели. Все расходы в сервисе максимально прозрачны: вы всегда видите примерную стоимость генерации, итоговую и остаток на счету</div>
+                </details>
+                <details class="bg-gray-50 dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 group">
+                    <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-sm list-none"><span><svg class="w-5 h-5 text-primary shrink-0 inline-block mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg> Если кредиты закончились?</span><svg class="w-4 h-4 text-gray-400 shrink-0 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></summary>
+                    <div class="px-5 pb-5 text-sm text-gray-600 dark:text-gray-400">Можно купить дополнительный пакет в любой момент. Чем выше тариф - тем выше скидка. Пакеты остаются с вами навсегда</div>
+                </details>
+                <details class="bg-gray-50 dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 group">
+                    <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-sm list-none"><span><svg class="w-5 h-5 text-primary shrink-0 inline-block mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> Какие способы оплаты?</span><svg class="w-4 h-4 text-gray-400 shrink-0 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></summary>
+                    <div class="px-5 pb-5 text-sm text-gray-600 dark:text-gray-400">Российские карты Visa, MasterCard, МИР, СБП. Никакие иностранные карты не нужны</div>
+                </details>
+                <details class="bg-gray-50 dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 group md:col-span-2">
+                    <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-sm list-none"><span><svg class="w-5 h-5 text-primary shrink-0 inline-block mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> Нужен ли VPN?</span><svg class="w-4 h-4 text-gray-400 shrink-0 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></summary>
+                    <div class="px-5 pb-5 text-sm text-gray-600 dark:text-gray-400">Нет! Sagana полностью работает без VPN. Все сервисы доступны из России напрямую</div>
+                </details>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TELEGRAM CHANNEL -->
+<section class="bg-gray-50 dark:bg-gray-800 py-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-center mb-12">Следи за обновлениями</h2>
+        <div class="grid md:grid-cols-3 gap-6 mb-12">
+            <div class="bg-white dark:bg-gray-900 rounded-lg overflow-hidden">
+                <img src="images/post2.svg" alt="Пост" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">Новые возможности и обновления в Sagana</p>
+                    <a href="https://t.me/saganaAI" target="_blank" class="text-primary hover:text-primary-dark font-medium">Читать в Telegram →</a>
+                </div></div>
+            <div class="bg-white dark:bg-gray-900 rounded-lg overflow-hidden">
+                <img src="images/post1.jpg" alt="Пост" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">Советы по использованию ИИ</p>
+                    <a href="https://t.me/saganaAI" target="_blank" class="text-primary hover:text-primary-dark font-medium">Читать в Telegram →</a>
+                </div>
+            </div>
+            <div class="bg-white dark:bg-gray-900 rounded-lg overflow-hidden">
+                <img src="images/post3.jpg" alt="Пост" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">Промо и специальные предложения</p>
+                    <a href="https://t.me/saganaAI" target="_blank" class="text-primary hover:text-primary-dark font-medium">Читать в Telegram →</a>
+                </div>
+            </div>
+        </div>
+        <div class="text-center">
+            <a href="https://t.me/saganaAI" target="_blank" class="js-cta bg-primary hover:bg-primary-dark text-white px-6 py-3 rounded-lg font-semibold transition inline-block">
+                Подписаться на канал
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="bg-gradient-to-r from-primary to-primary-dark py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl font-bold text-white mb-4">Готов начать?</h2>
+        <p class="text-base text-white text-opacity-90 mb-8">Попробуй все нейросети бесплатно прямо сейчас</p>
+        <a href="https://app.sagana.ru/" class="js-cta bg-white hover:bg-gray-100 text-primary px-8 py-3 rounded-lg font-semibold transition inline-block">
+            Попробовать бесплатно
+        </a>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-gray-900 dark:bg-black text-gray-400 py-12">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-3 gap-8 mb-8">
+            <div>
+                <img src="footer-logo.svg" alt="Sagana" class="h-24 mb-4">
+            </div>
+            <div>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="terms.html" class="hover:text-white transition">Условия использования</a></li>
+                    <li><a href="privacy.html" class="hover:text-white transition">Политика конфиденциальности</a></li>
+                    <li><a href="payment.html" class="hover:text-white transition">Соглашение об оплате</a></li>
+                </ul>
+            </div>
+            <div>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="https://t.me/saganaAI" target="_blank" class="hover:text-white transition">TG-канал</a></li>
+                    <li><a href="https://app.sagana.ru/" class="hover:text-white transition">Приложение</a></li>
+                    <li>support@sagana.ru</li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-gray-800 pt-8 text-center text-sm">
+            <p>&copy; 2026 Sagana. Все права защищены.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- MOBILE STICKY CTA -->
+<div id="mobile-cta" class="fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 p-4 md:hidden z-40 translate-y-full transition-transform duration-300">
+    <a href="https://app.sagana.ru/" class="js-cta block w-full bg-primary hover:bg-primary-dark text-white text-center py-3 rounded-lg font-semibold transition">
+        Попробовать бесплатно
+    </a>
+</div>
+
+<script>
+// DARK MODE TOGGLE
+const themeToggle = document.getElementById('theme-toggle');
+const iconMoon = document.getElementById('icon-moon');
+const iconSun = document.getElementById('icon-sun');
+const logoImg = document.getElementById('logo-img');
+const htmlElement = document.documentElement;
+
+const savedTheme = localStorage.getItem('theme') || 'light';
+if (savedTheme === 'dark') {
+    htmlElement.classList.add('dark');
+    iconMoon.classList.add('hidden');
+    iconSun.classList.remove('hidden');
+} else {
+    htmlElement.classList.remove('dark');
+    iconMoon.classList.remove('hidden');
+    iconSun.classList.add('hidden');
+}
+
+themeToggle.addEventListener('click', () => {
+    const isDark = htmlElement.classList.toggle('dark');
+    if (isDark) {
+        iconMoon.classList.add('hidden');
+        iconSun.classList.remove('hidden');
+    } else {
+        iconMoon.classList.remove('hidden');
+        iconSun.classList.add('hidden');
+    }
+    logoImg.src = isDark ? 'logo-dark.svg' : 'logo-light.svg';
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+});
+
+logoImg.src = htmlElement.classList.contains('dark') ? 'logo-dark.svg' : 'logo-light.svg';
+
+// TYPEWRITER EFFECT
+const models = ['ChatGPT', 'Gemini', 'Claude', 'Grok', 'Nano Banana'];
+let modelIdx = 0, charIdx = 0, isDeleting = false;
+const typingEl = document.getElementById('typing-model');
+function tick() {
+    const current = models[modelIdx];
+    if (isDeleting) {
+        charIdx--;
+        typingEl.textContent = current.slice(0, charIdx);
+        if (charIdx === 0) { isDeleting = false; modelIdx = (modelIdx + 1) % models.length; setTimeout(tick, 350); return; }
+        setTimeout(tick, 60);
+    } else {
+        charIdx++;
+        typingEl.textContent = current.slice(0, charIdx);
+        if (charIdx === current.length) { isDeleting = true; setTimeout(tick, 1800); return; }
+        setTimeout(tick, 100);
+    }
+}
+setTimeout(tick, 1500);
+
+// FREE CREDITS TEXT (static, no credit numbers)
+
+// RENDER PRICING
+function renderPricing(yearly) {
+    const container = document.getElementById('pricing-cards');
+    if (!container || typeof PRICING_CONFIG === 'undefined') return;
+    const sub = document.getElementById('pricing-subtitle');
+    if (sub) sub.textContent = 'Есть бесплатный пробный тариф';
+    const lm = document.getElementById('label-monthly');
+    const ly = document.getElementById('label-yearly');
+    if (lm) lm.className = 'text-sm font-semibold cursor-pointer ' + (!yearly ? 'text-gray-900 dark:text-white' : 'text-gray-400');
+    if (ly) ly.className = 'text-sm font-semibold cursor-pointer ' + (yearly ? 'text-gray-900 dark:text-white' : 'text-gray-400');
+    if (ly) ly.innerHTML = (yearly ? '' : '') + 'Годовой <span class="text-primary text-sm font-bold">выгоднее</span>';
+    container.innerHTML = PRICING_CONFIG.plans.map(plan => {
+        const isFree = plan.isFree;
+        const price = isFree ? 0 : (yearly ? Math.round(plan.priceYearly / 12) : plan.priceMonthly);
+        const saving = (!isFree && yearly) ? (plan.priceMonthly * 12 - plan.priceYearly) : 0;
+        const hl = plan.highlighted;
+        const priceDisplay = isFree
+            ? '<span class="text-3xl font-black text-green-500">БЕСПЛАТНО</span>'
+            : '<span class="text-4xl font-black">' + price.toLocaleString('ru-RU') + '</span><span class="text-sm font-semibold text-gray-400"> руб/мес</span>';
+        return `
+        <div class="bg-white dark:bg-gray-900 rounded-2xl p-8 ${hl ? 'border-2 border-primary shadow-lg' : isFree ? 'border-2 border-green-400 dark:border-green-600' : 'border border-gray-200 dark:border-gray-700'} flex flex-col relative">
+            ${hl ? '<div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-primary text-white text-sm font-bold px-4 py-1 rounded-full">' + plan.badge + '</div>' : ''}
+            ${isFree ? '<div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-green-500 text-white text-sm font-bold px-4 py-1 rounded-full">' + plan.badge + '</div>' : ''}
+            <div class="mb-6">
+                <h3 class="font-bold text-xl ${hl ? 'text-primary' : isFree ? 'text-green-500' : 'text-gray-500 dark:text-gray-400'} mb-1">${plan.name}</h3>
+                <div class="flex items-baseline gap-1">
+                    ${priceDisplay}
+                </div>
+                ${!isFree && yearly && saving > 0 ? '<p class="text-sm text-primary font-semibold mt-1">' + plan.priceYearly.toLocaleString('ru-RU') + ' руб./год (экономия ' + saving.toLocaleString('ru-RU') + ' руб.)</p>' : ''}
+                <p class="text-sm text-gray-400 mt-2">${plan.description}</p>
+            </div>
+            <ul class="space-y-3 mb-8 flex-grow">
+                ${plan.features.map(f => '<li class="flex items-center gap-2 text-sm ' + (f.included ? 'dark:text-gray-200' : 'text-gray-300 dark:text-gray-600 line-through') + '">' + (f.included ? '<svg class="w-4 h-4 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>' : '<svg class="w-4 h-4 shrink-0 opacity-30" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>') + (f.bold ? '<strong>' + f.text + '</strong>' : f.text) + '</li>').join('')}
+            </ul>
+            <a href="https://app.sagana.ru/" class="js-cta block w-full text-center py-3.5 rounded-xl font-bold text-sm transition-colors ${hl ? 'bg-primary hover:bg-primary-dark text-white' : isFree ? 'bg-green-500 hover:bg-green-600 text-white' : 'border-2 border-gray-200 dark:border-gray-600 hover:border-primary hover:text-primary dark:text-gray-300'}">
+                ${isFree ? 'Начать бесплатно' : 'Выбрать тариф'}
+            </a>
+        </div>`;
+    }).join('');
+}
+document.addEventListener('DOMContentLoaded', () => {
+    renderPricing(false);
+    const toggle = document.getElementById('billing-toggle');
+    if (toggle) toggle.addEventListener('change', () => renderPricing(toggle.checked));
+});
+
+// REVIEWS TICKER
+const reviewsData = [
+    { name: 'Дмитрий Козлов', role: 'SMM-специалист', email: 'd.kozlov@yandex.ru', text: 'Подписка окупается за неделю. Раньше платил за ChatGPT через посредников, теперь всё в рублях. Очень удобно.', color: '#FF6B6B', rating: 5 },
+    { name: 'Ольга Морозова', role: 'мама двоих детей', email: 'olya_moroz86@mail.ru', text: 'Ребёнок делает уроки с ИИ-ассистентом – объясняет понятнее, чем репетитор. Сама использую для рабочих текстов.', color: '#4ECDC4', rating: 5 },
+    { name: 'Кристина Белова', role: 'блогер', email: 'belova.k@gmail.com', text: 'Генерирую картинки и видео для блога в пять раз быстрее. Подписчики думают, что я наняла дизайнера.', color: '#45B7D1', rating: 5 },
+    { name: 'Александр Попов', role: 'разработчик', email: 'sashka.dev@yandex.ru', text: 'Переключаюсь между GPT и Claude не выходя из браузера. Сэкономил кучу времени и денег на подписках.', color: '#96CEB4', rating: 5 },
+    { name: 'Наталья Сидорова', role: 'копирайтер', email: 'nat.sidorova@mail.ru', text: 'Использую для написания постов и email-рассылок. Попробовала бесплатно – сразу оплатила тариф.', color: '#FFEAA7', rating: 5 },
+    { name: 'Михаил Кузнецов', role: 'предприниматель', email: 'misha_biz@gmail.com', text: 'Как предприниматель ценю что всё в одном месте. Команда из трёх человек работает с разными ИИ через одну подписку.', color: '#DDA0DD', rating: 5 },
+    { name: 'Анна Новикова', role: 'дизайнер', email: 'anna.novikova@yandex.ru', text: 'Claude для брейфов, GPT для кода, Gemini для переводов – переключаюсь в два клика. Это удобно.', color: '#98D8C8', rating: 5 },
+    { name: 'Сергей Лебедев', role: 'маркетолог', email: 'serzh_marketing@mail.ru', text: 'Протестировал три сервиса-агрегатора – Sagana понравился больше всего. Интерфейс чистый, загружается быстро.', color: '#F7DC6F', rating: 5 },
+    { name: 'Елена Петрова', role: 'HR-менеджер', email: 'elena.petrova@gmail.com', text: 'Отличный сервис для HR. Описания вакансий, анализ резюме, скрипты для собеседований – экономлю часы в неделю.', color: '#BB8FCE', rating: 5 },
+    { name: 'Андрей Соколов', role: 'студент МГУ', email: 'andrey_mgu23@yandex.ru', text: 'Дипломная работа написана наполовину с Claude. Качество проверял сам – всё на уровне.', color: '#52BE80', rating: 5 },
+    { name: 'Мария Волкова', role: 'редактор', email: 'm.volkova@mail.ru', text: 'Веду несколько проектов – папки для чатов реально помогают не запутаться. Удобная штука.', color: '#F0B27A', rating: 5 },
+    { name: 'Виктор Зайцев', role: 'фотограф', email: 'photovit@gmail.com', text: 'Использую Sora для клиентских видео-презентаций. Клиенты в восторге, думают что нанял студию.', color: '#5DADE2', rating: 5 },
+    { name: 'Ирина Соловьева', role: 'репетитор', email: 'i.solovieva@yandex.ru', text: 'Практикую английский с голосовым ИИ каждое утро. Прогресс за месяц – как за полгода с репетитором.', color: '#A9CCE3', rating: 5 },
+    { name: 'Павел Орлов', role: 'контент-менеджер', email: 'pashka_content@mail.ru', text: 'Оперативно отвечают в поддержке. Была проблема с оплатой – решили за 20 минут.', color: '#F1948A', rating: 5 },
+    { name: 'Татьяна Фомина', role: 'бухгалтер', email: 't.fomina@gmail.com', text: 'Использую для подготовки отчётов. Подгружаю данные, Claude делает структуру – мне остаётся только проверить.', color: '#82E0AA', rating: 5 },
+    { name: 'Денис Ковалёв', role: 'UX-дизайнер', email: 'denis.ux@yandex.ru', text: 'Шаринг диалога – мегаудобная фича. Показываю клиентам результаты прямо по ссылке.', color: '#C39BD3', rating: 5 },
+    { name: 'Светлана Голубева', role: 'журналист', email: 's.golubeva@mail.ru', text: 'Пишу статьи для нескольких изданий. С Sagana стало в 3 раза быстрее.', color: '#F8C471', rating: 5 },
+    { name: 'Артём Беляев', role: 'сисадмин', email: 'tema_admin@gmail.com', text: 'Поднял сервер с нуля за вечер с помощью GPT через Sagana. Раньше это заняло бы неделю поиска.', color: '#76D7C4', rating: 5 },
+    { name: 'Юлия Семёнова', role: 'переводчик', email: 'y.semenova@yandex.ru', text: 'Перевожу технические тексты с нескольких языков. Gemini справляется лучше, чем специализированные сервисы.', color: '#AED6F1', rating: 5 },
+    { name: 'Алексей Тихонов', role: 'видеограф', email: 'lyosha_video@mail.ru', text: 'Монтирую видео-контент, использую Veo для вставок. Экономия на стоке – колоссальная.', color: '#F9E79F', rating: 5 },
+    { name: 'Надежда Медведева', role: 'психолог', email: 'n.medvedeva@gmail.com', text: 'Как психолог – ИИ помогает составлять материалы для клиентов, структурировать сессии.', color: '#A8D8EA', rating: 5 },
+    { name: 'Роман Яковлев', role: 'SEO-специалист', email: 'romych_seo@yandex.ru', text: 'SEO-тексты пишу в разы быстрее. Конкурент платит копирайтеру, я плачу 290 рублей.', color: '#F7CAC9', rating: 5 },
+    { name: 'Валерия Макарова', role: 'менеджер проектов', email: 'v.makarova@mail.ru', text: 'Ведём несколько продуктов. У каждого своя папка чатов – порядок в голове и в работе.', color: '#92A8D1', rating: 5 },
+    { name: 'Игорь Захаров', role: 'предприниматель', email: 'zakharov_igor78@gmail.com', text: 'Пробовал подписки напрямую через VPN – постоянные сбои. Sagana работает стабильно.', color: '#955251', rating: 5 },
+    { name: 'Ксения Борисова', role: 'преподаватель', email: 'k.borisova@yandex.ru', text: 'Объясняю студентам сложный материал – прошу Claude придумать аналогии и примеры.', color: '#B5EAD7', rating: 5 },
+    { name: 'Никита Громов', role: 'стартапер', email: 'nikitos_startup@mail.ru', text: 'Питч-дек для инвесторов сделал за вечер. Инвесторы спросили какое агентство делало :)', color: '#C7CEEA', rating: 5 },
+    { name: 'Вероника Степанова', role: 'PR-менеджер', email: 'v.stepanova@gmail.com', text: 'PR-материалы, пресс-релизы, тексты для СМИ – всё через Sagana. Отдел из одного человека.', color: '#FFDAC1', rating: 5 },
+    { name: 'Геннадий Ефимов', role: 'юрист', email: 'gena_lawyer@yandex.ru', text: 'Анализирую договоры с Claude. Он находит то, что я мог пропустить. Очень полезно.', color: '#FFB7B2', rating: 5 },
+    { name: 'Диана Константинова', role: 'менеджер по продажам', email: 'd.konstantinova@mail.ru', text: 'Скрипты для звонков, коммерческие предложения, обработка возражений – Sagana закрывает всё.', color: '#E2F0CB', rating: 5 },
+    { name: 'Евгений Миронов', role: 'технический писатель', email: 'zhenya_techwriter@gmail.com', text: 'Пишу техническую документацию. Claude понимает контекст целого проекта – это бесценно.', color: '#B5B9FF', rating: 5 },
+];
+
+function renderReviews() {
+    const container = document.getElementById('reviews-container');
+    const reviewHTML = reviewsData.map(review => `
+        <div class="review-card">
+            <div class="flex items-start gap-3 mb-4">
+                <div class="avatar-circle" style="background-color: ${review.color}">
+                    ${review.name.split(' ').map(n => n[0]).join('')}
+                </div>
+                <div>
+                    <p class="font-semibold text-gray-900 dark:text-white">${review.name}</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">${review.role}</p>
+                </div>
+            </div>
+            <div class="flex gap-0.5 mb-3">
+                ${'★'.repeat(review.rating)}<span class="text-gray-300">${'★'.repeat(5-review.rating)}</span>
+            </div>
+            <p class="text-sm text-gray-700 dark:text-gray-300 mb-3">${review.text}</p>
+            <p class="text-sm text-gray-500 dark:text-gray-500">${review.email}</p>
+        </div>
+    `).join('');
+
+    container.innerHTML = reviewHTML + reviewHTML;
+}
+
+renderReviews();
+
+// FEATURE GALLERY - fade slides + prompt update
+document.querySelectorAll('.feature-gallery').forEach(gallery => {
+    const slides = gallery.querySelectorAll('.gallery-slide');
+    const dots = gallery.querySelectorAll('.gallery-dot');
+    const prevBtn = gallery.querySelector('.gallery-prev');
+    const nextBtn = gallery.querySelector('.gallery-next');
+    const promptEl = gallery.querySelector('.gallery-prompt');
+    const prompts = promptEl ? promptEl.dataset.prompts.split('||') : [];
+    const total = slides.length;
+    let current = 0;
+
+    function goTo(idx) {
+        current = ((idx % total) + total) % total;
+        slides.forEach((s, i) => {
+            s.style.opacity = i === current ? '1' : '0';
+            s.style.pointerEvents = i === current ? 'auto' : 'none';
+        });
+        dots.forEach((d, i) => {
+            d.className = `gallery-dot w-2 h-2 rounded-full shadow transition ${i === current ? 'bg-white' : 'bg-white/40'}`;
+        });
+        if (promptEl) {
+            const promptBox = promptEl.parentElement;
+            if (prompts[current] && prompts[current].trim()) {
+                promptEl.textContent = '\u00ab' + prompts[current] + '\u00bb';
+                if (promptBox) promptBox.style.display = '';
+            } else {
+                promptEl.textContent = '';
+                if (promptBox) promptBox.style.display = 'none';
+            }
+        }
+    }
+
+    goTo(0); // init: hide prompt box if first slide has no prompt
+
+    prevBtn.addEventListener('click', () => goTo(current - 1));
+    nextBtn.addEventListener('click', () => goTo(current + 1));
+
+    // Touch swipe
+    let startX = 0;
+    gallery.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+    gallery.addEventListener('touchend', e => {
+        const diff = startX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 40) goTo(current + (diff > 0 ? 1 : -1));
+    }, { passive: true });
+});
+
+// TRY INPUT WIDGET
+const tryInput = document.getElementById('try-input');
+const tryBtn = document.getElementById('try-btn');
+const copyToast = document.getElementById('copy-toast');
+
+tryBtn.addEventListener('click', async () => {
+    const text = tryInput.value.trim();
+    if (!text) {
+        alert('Пожалуйста, напишите что-то в поле');
+        return;
+    }
+
+    try {
+        await navigator.clipboard.writeText(text);
+        copyToast.classList.remove('hidden');
+        setTimeout(() => {
+            copyToast.classList.add('hidden');
+            window.location.href = 'https://app.sagana.ru/';
+        }, 1000);
+    } catch (err) {
+        console.error('Ошибка копирования:', err);
+        alert('Ошибка при копировании. Попробуйте ещё раз.');
+    }
+});
+
+
+// FAQ is always open, no toggle needed
+
+
+// MOBILE STICKY CTA - show after scroll
+const mobileCta = document.getElementById('mobile-cta');
+if (mobileCta) {
+    window.addEventListener('scroll', () => {
+        mobileCta.classList.toggle('translate-y-full', window.scrollY <= 600);
+    }, { passive: true });
+}
+
+// UTM CAPTURE
+(function() {
+    const params = new URLSearchParams(window.location.search);
+    const utm = {};
+    ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'].forEach(key => {
+        if (params.has(key)) utm[key] = params.get(key);
+    });
+    if (Object.keys(utm).length > 0) {
+        localStorage.setItem('utm_params', JSON.stringify(utm));
+    }
+})();
+
+// TRACK CTA CLICKS
+document.querySelectorAll('.js-cta').forEach(link => {
+    link.addEventListener('click', (e) => {
+        const utm = JSON.parse(localStorage.getItem('utm_params') || '{}');
+        if (Object.keys(utm).length > 0) {
+            const url = new URL(link.href);
+            Object.entries(utm).forEach(([k, v]) => {
+                url.searchParams.set(k, v);
+            });
+            e.preventDefault();
+            window.location.href = url.toString();
+        }
+    });
+});
+</script>
+
+</body>
+</html>

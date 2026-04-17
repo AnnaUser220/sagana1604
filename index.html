@@ -857,6 +857,14 @@ function renderReviews() {
 
 renderReviews();
 
+// ADAPTIVE REVIEW SPEED — faster on mobile
+(function() {
+    const container = document.getElementById('reviews-container');
+    if (!container) return;
+    const speed = window.innerWidth < 768 ? 15 : 40;
+    container.style.animationDuration = speed + 's';
+})();
+
 // FEATURE GALLERY - fade slides + prompt update
 document.querySelectorAll('.feature-gallery').forEach(gallery => {
     const slides = gallery.querySelectorAll('.gallery-slide');

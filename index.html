@@ -40,14 +40,6 @@
     <style>
         html { scroll-behavior: smooth; }
 
-        .review-ticker {
-            animation: scrollLeft 10s linear infinite;
-        }
-        @media (min-width: 768px) {
-            .review-ticker {
-                animation: scrollLeft 40s linear infinite;
-            }
-        }
         .gallery-container {
             height: 250px;
         }
@@ -557,7 +549,7 @@
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="text-3xl font-bold text-center mb-12">Что говорят пользователи</h2>
         <div class="relative overflow-hidden">
-            <div class="flex gap-6 animate-scroll-left review-ticker" id="reviews-container">
+            <div class="flex gap-6 animate-scroll-left" id="reviews-container">
                 <!-- Reviews will be inserted here by JavaScript -->
             </div>
         </div>
